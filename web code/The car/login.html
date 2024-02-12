@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Login & Sign up Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="container  p-4">
+        <div class="row main mt-5">
+
+            <!-- sign up form -->
+            <div class="col-md-6 p-5 " id="signUp">
+                <h1 class="display-4 text-center ">Sign up</h1>
+                <form class="d-flex justify-content-center mt-4"id="registerForm">
+                    <div class="w-75 ">
+                        <div class="form-group">
+                          
+                            <input type="email" placeholder="Email"id="registerEmail"required>
+                        </div>
+                        <div class="form-group my-4">
+                          
+                            <input type="password" placeholder="Password"id="registerPassword"required>
+                        </div>
+                        <button class="button"type="submit">Register</button>
+                        <div class="d-flex justify-content-between mt-5">
+                            <a class="links" href="#" id="loginLink">Already have an Account ?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Login Form  -->
+            
+            <div class="col-md-6 p-5 " id="login">
+                <h1 class="display-4 text-center ">Login</h1>
+                <form class="d-flex justify-content-center mt-4"id="loginForm">
+                    <div class="w-75 ">
+                        <div class="form-group">
+                            <input type="email"placeholder="Email" id="loginEmail"  required>
+                        </div>
+                        <div class="form-group my-4">
+                         
+                            <input type="password"placeholder="Password" id="loginPassword"  required>
+                        </div>
+                        <button class="button" type="submit">log in</button>
+                      
+                            <a class="links" href="#" id="registerLink">Create an Account ?</a>
+                            <h6>or sing in with your account</h6>
+                            <button onclick="loginWithGoogle()"id="login"class="login-with-google-btn">Sign in with Google</button>
+                        
+                        
+                    </div>
+                    
+                </form>
+            </div>
+            <div  id="overlay">
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+  
+document.querySelectorAll('input').forEach((item) => {
+    item.addEventListener("focus", function () {
+        item.previousElementSibling.className = 'label-selected';
+    })
+    item.addEventListener("blur", function () {
+        console.log(item.value);
+        if (item.value === '') {
+            item.previousElementSibling.className = '';
+        }
+    })
+})
+
+document.getElementById("registerLink").addEventListener("click", function () {
+    if (window.innerWidth < 600) {
+        document.getElementById("signUp").style.display = 'block';
+        document.getElementById("login").style.display = 'none';
+    }
+    else {
+        document.getElementById("overlay").style.transform = 'translate(550px , -25px)';
+    }
+})
+document.getElementById("loginLink").addEventListener("click", function () {
+    if (window.innerWidth < 600) {
+        document.getElementById("login").style.display = 'block';
+        document.getElementById("signUp").style.display = 'none';
+    }
+    else {
+        document.getElementById("overlay").style.transform = 'translate(0px , -25px)';
+    }
+})
+
+
+ 
+    </script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="./js/login.js"></script>
+
+</body>
+</html>
